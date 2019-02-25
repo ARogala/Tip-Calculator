@@ -4,16 +4,11 @@ class Basic extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			prePostTax: '--Please Choose an Option--',
 			numPeople: 1,
-			billAmout: 0,
-			taxPercent: 0,
-			tipPercent: 0
+			billAmout: '',
+			taxPercent: '',
+			tipPercent: ''
 		};
-	}
-
-	handlePrePostTaxChange(e) {
-		this.setState({ prePostTax: e.target.value });
 	}
 
 	handleNumPeopleChange(e) {
@@ -34,7 +29,6 @@ class Basic extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		console.log(this.state.prePostTax);
 		console.log('Num Ppl: ', this.state.numPeople);
 		console.log('Bill Amount: ', this.state.billAmout);
 		console.log('Tax Percent: ', this.state.taxPercent);
@@ -45,9 +39,9 @@ class Basic extends React.Component {
 		this.setState({
 			prePostTax: '--Please Choose an Option--',
 			numPeople: 1,
-			billAmout: 0,
-			taxPercent: 0,
-			tipPercent: 0
+			billAmout: '',
+			taxPercent: '',
+			tipPercent: ''
 		});
 	}
 
@@ -56,29 +50,9 @@ class Basic extends React.Component {
 			<div>
 				<p>
 					The basic tip calculator will split the bill evenly between the number of people selected on a Pre
-					or Post tax basis. Take care to enter the proper bill amount. (Pre or Post tax amount)
+					or Post tax basis.
 				</p>
 				<form className="TipCalcForm" onSubmit={e => this.handleSubmit(e)}>
-					<fieldset className="TipCalcForm__fieldset">
-						<legend className="TipCalcForm__legend">Tip on pre or post tax bill amount?</legend>
-						<label className="TipCalcForm__label" htmlFor="prePostTaxSelect">
-							Choose:
-						</label>
-						<div className="TipCalcForm__select-div">
-							<select
-								className="TipCalcForm__select"
-								id="prePostTaxSelect"
-								value={this.state.prePostTax}
-								onChange={e => this.handlePrePostTaxChange(e)}
-							>
-								<option value="--Please Choose an Option--" disabled>
-									--Please Choose an Option--
-								</option>
-								<option value="Tip on pre-tax bill amount">Tip on pre-tax bill amount</option>
-								<option value="Tip on post-tax bill amount">Tip on post-tax bill amount</option>
-							</select>
-						</div>
-					</fieldset>
 					<fieldset className="TipCalcForm__fieldset">
 						<legend className="TipCalcForm__legend">Choose number of people splitting the bill</legend>
 						<label className="TipCalcForm__label" htmlFor="numPeopleInput">
@@ -93,10 +67,11 @@ class Basic extends React.Component {
 							onChange={e => this.handleNumPeopleChange(e)}
 						/>
 					</fieldset>
-
 					<fieldset className="TipCalcForm__fieldset">
 						<legend className="TipCalcForm__legend">Enter Bill Amount:</legend>
-						<label className="TipCalcForm__label" htmlFor="billAmoutInput">Bill Amount</label>
+						<label className="TipCalcForm__label" htmlFor="billAmoutInput">
+							Bill Amount
+						</label>
 						<input
 							className="TipCalcForm__input"
 							type="number"
@@ -109,7 +84,9 @@ class Basic extends React.Component {
 					</fieldset>
 					<fieldset className="TipCalcForm__fieldset">
 						<legend className="TipCalcForm__legend">Enter Tax Percent:</legend>
-						<label className="TipCalcForm__label" htmlFor="taxPercentInput">Tax Percent</label>
+						<label className="TipCalcForm__label" htmlFor="taxPercentInput">
+							Tax Percent
+						</label>
 						<input
 							className="TipCalcForm__input"
 							type="number"
@@ -123,7 +100,9 @@ class Basic extends React.Component {
 
 					<fieldset className="TipCalcForm__fieldset">
 						<legend className="TipCalcForm__legend">Enter Tip Percent:</legend>
-						<label className="TipCalcForm__label" htmlFor="tipPercentInput">Tip Percent</label>
+						<label className="TipCalcForm__label" htmlFor="tipPercentInput">
+							Tip Percent
+						</label>
 						<input
 							className="TipCalcForm__input"
 							type="number"

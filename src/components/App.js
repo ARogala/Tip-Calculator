@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+import PrePostTaxSelect from './PrePostTaxSelect';
 import Basic from './Basic';
 import BasicResults from './BasicResults';
 
@@ -31,6 +32,7 @@ class App extends Component {
                 </header>
 
                 <main className="main" role="main" >
+                    <PrePostTaxSelect />
                     <Basic />
                     <BasicResults />
                 </main>
