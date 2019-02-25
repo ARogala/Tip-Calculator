@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import Basic from './Basic';
+import BasicResults from './BasicResults';
 
 import calculator from '../images/Calculator1.svg';
 
@@ -31,6 +32,7 @@ class App extends Component {
 
                 <main className="main" role="main" >
                     <Basic />
+                    <BasicResults />
                 </main>
                 <ToastContainer />
             </div>
