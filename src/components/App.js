@@ -5,12 +5,13 @@ import { ToastContainer } from 'react-toastify';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
+import Basic from './Basic';
+
 import calculator from '../images/Calculator1.svg';
 
 class App extends Component {
     render() {
         return (
-            
             <div className="App">
                 <nav className="nav">
                     <Link to="/" className="nav__link">
@@ -27,9 +28,9 @@ class App extends Component {
                     <h1>Tip Calculator</h1>
                     <img className="header__img" src={calculator} alt="beer" />
                 </header>
-                
-                <main className="main" role="main">
-                
+
+                <main className="main" role="main" >
+                    <Basic />
                 </main>
                 <ToastContainer />
             </div>
