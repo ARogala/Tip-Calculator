@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 
 import { getBasicInputPreTax, getBasicInputPostTax } from '../redux/actions';
@@ -13,6 +14,12 @@ class Basic extends React.Component {
 			tipPercent: ''
 		};
 	}
+
+	alertUser = () => {
+		toast.error('Please enter all your bill information.', {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
 
 	handleNumPeopleChange(e) {
 		this.setState({ numPeople: e.target.value });
@@ -33,20 +40,27 @@ class Basic extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		const prePostTaxChoice = this.props.prePostTaxChoice;
-		if (prePostTaxChoice === 'Tip on pre-tax bill amount') {
-			this.props.getBasicInputPreTax(
-				this.state.numPeople,
-				this.state.billAmout,
-				this.state.taxPercent,
-				this.state.tipPercent
-			);
-		} else if (prePostTaxChoice === 'Tip on post-tax bill amount') {
-			this.props.getBasicInputPostTax(this.state.numPeople, this.state.billAmout, this.state.tipPercent);
+		const numPeople = this.state.numPeople;
+		const billAmout = this.state.billAmout;
+		const taxPercent = this.state.taxPercent;
+		const tipPercent = this.state.tipPercent;
+
+		if (
+			prePostTaxChoice === 'Tip on pre-tax bill amount' &&
+			billAmout !== '' &&
+			taxPercent !== '' &&
+			tipPercent !== ''
+		) {
+			this.props.getBasicInputPreTax(numPeople, billAmout, taxPercent, tipPercent);
+		} else if (prePostTaxChoice === 'Tip on post-tax bill amount' && billAmout !== '' && tipPercent !== '') {
+			this.props.getBasicInputPostTax(numPeople, billAmout, tipPercent);
+		} else {
+			this.alertUser();
 		}
-		// console.log('Num Ppl: ', this.state.numPeople);
-		// console.log('Bill Amount: ', this.state.billAmout);
-		// console.log('Tax Percent: ', this.state.taxPercent);
-		// console.log('Tip Percent: ', this.state.tipPercent);
+		//console.log('Num Ppl: ', numPeople);
+		//console.log('Bill Amount: ', billAmout);
+		//console.log('Tax Percent: ', taxPercent);
+		//console.log('Tip Percent: ', tipPercent);
 	}
 
 	resetForm() {

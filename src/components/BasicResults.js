@@ -29,11 +29,11 @@ class BasicResults extends React.Component {
 					<ul>
 						<li>Bill Summary</li>
 						<ul>
-							<li>Post Tax Bill Amount: ${basicResultsPostTax.billAmount}</li>
-							<li>Tip: ${basicResultsPostTax.tipAmount}</li>
+							<li>Post Tax Bill Amount: {basicResultsPostTax.billAmount}</li>
+							<li>Tip: {basicResultsPostTax.tipAmount}</li>
 							<li>Bill split between: {basicResultsPostTax.numPeople}</li>
-							<li>Split Amount: ${basicResultsPostTax.splitAmount}</li>
-							<li>Total: ${basicResultsPostTax.total}</li>
+							<li>Split Amount: {basicResultsPostTax.splitAmount}</li>
+							<li>Total: {basicResultsPostTax.total}</li>
 						</ul>
 					</ul>
 				)}
