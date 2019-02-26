@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import { getBasicInputPreTax, getBasicInputPostTax } from '../redux/actions';
+
 class Basic extends React.Component {
 	constructor(props) {
 		super(props);
@@ -30,6 +32,17 @@ class Basic extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
+		const prePostTaxChoice = this.props.prePostTaxChoice;
+		if (prePostTaxChoice === 'Tip on pre-tax bill amount') {
+			this.props.getBasicInputPreTax(
+				this.state.numPeople,
+				this.state.billAmout,
+				this.state.taxPercent,
+				this.state.tipPercent
+			);
+		} else if (prePostTaxChoice === 'Tip on post-tax bill amount') {
+			this.props.getBasicInputPostTax(this.state.numPeople, this.state.billAmout, this.state.tipPercent);
+		}
 		console.log('Num Ppl: ', this.state.numPeople);
 		console.log('Bill Amount: ', this.state.billAmout);
 		console.log('Tax Percent: ', this.state.taxPercent);
@@ -136,7 +149,12 @@ const mapStateToProps = state => {
 	};
 };
 
+const mapDispatchToProps = {
+	getBasicInputPreTax: getBasicInputPreTax,
+	getBasicInputPostTax: getBasicInputPostTax
+};
+
 export default connect(
 	mapStateToProps,
-	null
+	mapDispatchToProps
 )(Basic);
