@@ -1,10 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { getPrePostTaxChoice } from '../redux/actions';
 
 class PrePostTaxSelect extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			prePostTax: '--Please Choose an Option--'
+			prePostTax: 'Tip on pre-tax bill amount'
 		};
 	}
 
@@ -14,12 +17,12 @@ class PrePostTaxSelect extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		console.log(this.state.prePostTax);
+		this.props.getPrePostTaxChoice(this.state.prePostTax);
 	}
 
 	resetForm() {
 		this.setState({
-			prePostTax: '--Please Choose an Option--'
+			prePostTax: 'Tip on pre-tax bill amount'
 		});
 	}
 
@@ -38,9 +41,6 @@ class PrePostTaxSelect extends React.Component {
 							value={this.state.prePostTax}
 							onChange={e => this.handlePrePostTaxChange(e)}
 						>
-							<option value="--Please Choose an Option--" disabled>
-								--Please Choose an Option--
-							</option>
 							<option value="Tip on pre-tax bill amount">Tip on pre-tax bill amount</option>
 							<option value="Tip on post-tax bill amount">Tip on post-tax bill amount</option>
 						</select>
@@ -61,4 +61,11 @@ class PrePostTaxSelect extends React.Component {
 	}
 }
 
-export default PrePostTaxSelect;
+const mapDispatchToProps = {
+	getPrePostTaxChoice: getPrePostTaxChoice
+};
+
+export default connect(
+	null,
+	mapDispatchToProps
+)(PrePostTaxSelect);

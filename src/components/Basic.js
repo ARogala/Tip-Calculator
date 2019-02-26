@@ -37,7 +37,6 @@ class Basic extends React.Component {
 
 	resetForm() {
 		this.setState({
-			prePostTax: '--Please Choose an Option--',
 			numPeople: 1,
 			billAmout: '',
 			taxPercent: '',
@@ -48,13 +47,9 @@ class Basic extends React.Component {
 	render() {
 		return (
 			<div>
-				<p>
-					The basic tip calculator will split the bill evenly between the number of people selected on a Pre
-					or Post tax basis.
-				</p>
 				<form className="TipCalcForm" onSubmit={e => this.handleSubmit(e)}>
 					<fieldset className="TipCalcForm__fieldset">
-						<legend className="TipCalcForm__legend">Choose number of people splitting the bill</legend>
+						<legend className="TipCalcForm__legend">Choose the number of people splitting the bill:</legend>
 						<label className="TipCalcForm__label" htmlFor="numPeopleInput">
 							Number of people splitting the bill
 						</label>
