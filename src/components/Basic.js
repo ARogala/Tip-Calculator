@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 class Basic extends React.Component {
 	constructor(props) {
@@ -45,6 +46,8 @@ class Basic extends React.Component {
 	}
 
 	render() {
+		console.log(this.props.prePostTaxChoice);
+		const prePostTaxChoice = this.props.prePostTaxChoice;
 		return (
 			<div>
 				<form className="TipCalcForm" onSubmit={e => this.handleSubmit(e)}>
@@ -77,21 +80,23 @@ class Basic extends React.Component {
 							onChange={e => this.handleBillAmountChange(e)}
 						/>
 					</fieldset>
-					<fieldset className="TipCalcForm__fieldset">
-						<legend className="TipCalcForm__legend">Enter Tax Percent:</legend>
-						<label className="TipCalcForm__label" htmlFor="taxPercentInput">
-							Tax Percent
-						</label>
-						<input
-							className="TipCalcForm__input"
-							type="number"
-							id="taxPercentInput"
-							min="0"
-							step="0.001"
-							value={this.state.taxPercent}
-							onChange={e => this.handleTaxPercentChange(e)}
-						/>
-					</fieldset>
+					{prePostTaxChoice === 'Tip on pre-tax bill amount' ? (
+						<fieldset className="TipCalcForm__fieldset">
+							<legend className="TipCalcForm__legend">Enter Tax Percent:</legend>
+							<label className="TipCalcForm__label" htmlFor="taxPercentInput">
+								Tax Percent
+							</label>
+							<input
+								className="TipCalcForm__input"
+								type="number"
+								id="taxPercentInput"
+								min="0"
+								step="0.001"
+								value={this.state.taxPercent}
+								onChange={e => this.handleTaxPercentChange(e)}
+							/>
+						</fieldset>
+					) : null}
 
 					<fieldset className="TipCalcForm__fieldset">
 						<legend className="TipCalcForm__legend">Enter Tip Percent:</legend>
@@ -125,4 +130,13 @@ class Basic extends React.Component {
 	}
 }
 
-export default Basic;
+const mapStateToProps = state => {
+	return {
+		prePostTaxChoice: state.prePostTaxChoice
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	null
+)(Basic);

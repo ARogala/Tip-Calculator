@@ -9,18 +9,16 @@ const calcTip = (tip = initialState.tip, action) => {
 	return tip;
 };
 
-const setPrePostTaxChoice = (prePostTaxChoice = initialState.prePostTaxChoice, action) => {
+const prePostTaxChoice = (prePostTaxChoice = initialState.prePostTaxChoice, action) => {
 	switch (action.type) {
 		case 'PRE_POST_TAX_CHOICE':
-			console.log(action.payload);
 			return action.payload;
 		default:
-			console.log(prePostTaxChoice);
 			return prePostTaxChoice;
 	}
 };
 
 export default combineReducers({
 	calcTip: calcTip,
-	setPrePostTaxChoice: setPrePostTaxChoice
+	prePostTaxChoice: prePostTaxChoice
 });

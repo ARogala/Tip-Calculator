@@ -51,11 +51,6 @@ class PrePostTaxSelect extends React.Component {
 						Submit
 					</button>
 				</div>
-				<div className="appBtnContainer">
-					<button className="appBtn" type="button" value="Reset" onClick={() => this.resetForm()}>
-						Cancel
-					</button>
-				</div>
 			</form>
 		);
 	}
