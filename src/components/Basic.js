@@ -7,7 +7,7 @@ class Basic extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			numPeople: 1,
+			numPeople: '1',
 			billAmout: '',
 			taxPercent: '',
 			tipPercent: ''
@@ -43,15 +43,15 @@ class Basic extends React.Component {
 		} else if (prePostTaxChoice === 'Tip on post-tax bill amount') {
 			this.props.getBasicInputPostTax(this.state.numPeople, this.state.billAmout, this.state.tipPercent);
 		}
-		console.log('Num Ppl: ', this.state.numPeople);
-		console.log('Bill Amount: ', this.state.billAmout);
-		console.log('Tax Percent: ', this.state.taxPercent);
-		console.log('Tip Percent: ', this.state.tipPercent);
+		// console.log('Num Ppl: ', this.state.numPeople);
+		// console.log('Bill Amount: ', this.state.billAmout);
+		// console.log('Tax Percent: ', this.state.taxPercent);
+		// console.log('Tip Percent: ', this.state.tipPercent);
 	}
 
 	resetForm() {
 		this.setState({
-			numPeople: 1,
+			numPeople: '1',
 			billAmout: '',
 			taxPercent: '',
 			tipPercent: ''
