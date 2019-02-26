@@ -5,6 +5,12 @@ export const getPrePostTaxChoice = prePostTax => {
 	};
 };
 
+export const displayResults = () => {
+	return {
+		type: 'DISPLAY_RESULTS'
+	};
+};
+
 export const getBasicInputPreTax = (numPeople, billAmount, taxPercent, tipPercent) => {
 	return {
 		type: 'GET_BASIC_INPUT_PRETAX',

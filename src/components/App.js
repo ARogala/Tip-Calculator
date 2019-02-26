@@ -33,8 +33,8 @@ class App extends Component {
 
                 <main className="main" role="main" >
                     <p>
-                        The basic tip calculator will split the bill evenly between the number of people selected on a Pre
-                        or Post tax basis. Default calculates on a pre tax basis. 
+                        The basic tip calculator will split the bill evenly between the number of people selected on a pre
+                        or post tax basis. Default calculates on a pre tax basis. The split amount may be off due to rounding. 
                     </p>
                     <PrePostTaxSelect />
                     <Basic />

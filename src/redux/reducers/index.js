@@ -9,9 +9,18 @@ Dinero.globalLocale = 'en-US';
 const initialState = {
 	prePostTaxChoice: 'Tip on pre-tax bill amount',
 	basicResultsPreTax: { numPeople: 1, billAmount: 0, taxAmount: 0, tipAmount: 0, splitAmount: 0, total: 0 },
-	basicResultsPostTax: { numPeople: 1, billAmount: 0, tipAmount: 0, splitAmount: 0, total: 0 }
+	basicResultsPostTax: { numPeople: 1, billAmount: 0, tipAmount: 0, splitAmount: 0, total: 0 },
+	displayResults: false
 };
 
+const displayResults = (displayResults = initialState.displayResults, action) => {
+	switch (action.type) {
+		case 'DISPLAY_RESULTS': 
+			return true
+		default:
+			return false
+	}
+}
 const basicResultsPreTax = (basicResultsPreTax = initialState.basicResultsPreTax, action) => {
 	switch (action.type) {
 		case 'GET_BASIC_INPUT_PRETAX':
@@ -96,5 +105,6 @@ const prePostTaxChoice = (prePostTaxChoice = initialState.prePostTaxChoice, acti
 export default combineReducers({
 	prePostTaxChoice: prePostTaxChoice,
 	basicResultsPreTax: basicResultsPreTax,
-	basicResultsPostTax: basicResultsPostTax
+	basicResultsPostTax: basicResultsPostTax,
+	displayResults: displayResults
 });
