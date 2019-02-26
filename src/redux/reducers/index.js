@@ -28,8 +28,8 @@ const basicResultsPreTax = (basicResultsPreTax = initialState.basicResultsPreTax
 				splitAmount: splitAmount,
 				total: total
 			});
-			console.log('orig: ', basicResultsPreTax);
-			console.log('new: ', newBasicResultsPreTax);
+			//console.log('orig: ', basicResultsPreTax);
+			//console.log('new: ', newBasicResultsPreTax);
 			//return new state
 			return newBasicResultsPreTax;
 		default:
@@ -56,8 +56,8 @@ const basicResultsPostTax = (basicResultsPostTax = initialState.basicResultsPost
 				splitAmount: splitAmount,
 				total: total
 			});
-			console.log('orig: ', basicResultsPostTax);
-			console.log('new: ', newBasicResultsPostTax);
+			//console.log('orig: ', basicResultsPostTax);
+			//console.log('new: ', newBasicResultsPostTax);
 			//return new state
 			return newBasicResultsPostTax;
 		default:

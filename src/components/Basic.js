@@ -59,7 +59,7 @@ class Basic extends React.Component {
 	}
 
 	render() {
-		console.log(this.props.prePostTaxChoice);
+		//console.log(this.props.prePostTaxChoice);
 		const prePostTaxChoice = this.props.prePostTaxChoice;
 		return (
 			<div>
