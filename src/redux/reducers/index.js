@@ -1,4 +1,10 @@
 import { combineReducers } from 'redux';
+import Dinero from 'dinero.js'; //for currency calc
+
+//set Dinero globals
+Dinero.defaultCurrency = 'USD';
+Dinero.defaultPrecision = 2;
+Dinero.globalLocale = 'en-US';
 
 const initialState = {
 	prePostTaxChoice: 'Tip on pre-tax bill amount',
@@ -9,16 +15,23 @@ const initialState = {
 const basicResultsPreTax = (basicResultsPreTax = initialState.basicResultsPreTax, action) => {
 	switch (action.type) {
 		case 'GET_BASIC_INPUT_PRETAX':
-			//get user input
+			//get user input Dinero currency must be in cents
 			const numPeople = parseInt(action.payload.numPeople);
-			const billAmount = parseFloat(action.payload.billAmount);
+			let billAmount = Dinero({ amount: parseFloat(action.payload.billAmount)*100 });
 			const taxPercent = parseFloat(action.payload.taxPercent);
 			const tipPercent = parseFloat(action.payload.tipPercent);
 			//calc results
-			const taxAmount = billAmount * (taxPercent / 100);
-			const tipAmount = billAmount * (tipPercent / 100);
-			const total = billAmount + taxAmount + tipAmount;
-			const splitAmount = total / numPeople;
+			let taxAmount = billAmount.percentage(taxPercent);
+			let tipAmount = billAmount.percentage(tipPercent);
+			let total = billAmount.add(taxAmount).add(tipAmount);
+			let splitAmount = total.divide(numPeople);
+			//format results
+			billAmount = billAmount.toFormat('$0,0.00');
+			taxAmount = taxAmount.toFormat('$0,0.00');
+			tipAmount = tipAmount.toFormat('$0,0.00');
+			total = total.toFormat('$0,0.00');
+			splitAmount = splitAmount.toFormat('$0,0.00');
+
 			//assign to obj
 			const newBasicResultsPreTax = Object.assign({}, basicResultsPreTax, {
 				numPeople: numPeople,
@@ -40,14 +53,20 @@ const basicResultsPreTax = (basicResultsPreTax = initialState.basicResultsPreTax
 const basicResultsPostTax = (basicResultsPostTax = initialState.basicResultsPostTax, action) => {
 	switch (action.type) {
 		case 'GET_BASIC_INPUT_POSTTAX':
-			//get user input
+			//get user input Dinero currency must be in cents
 			const numPeople = parseInt(action.payload.numPeople);
-			const billAmount = parseFloat(action.payload.billAmount);
+			let billAmount = Dinero({ amount: parseFloat(action.payload.billAmount)*100 });
 			const tipPercent = parseFloat(action.payload.tipPercent);
 			//calc results
-			const tipAmount = billAmount * (tipPercent / 100);
-			const total = billAmount + tipAmount;
-			const splitAmount = total / numPeople;
+			let tipAmount = billAmount.percentage(tipPercent);
+			let total = billAmount.add(tipAmount);
+			let splitAmount = total.divide(numPeople);
+			//format results
+			billAmount = billAmount.toFormat('$0,0.00');
+			tipAmount = tipAmount.toFormat('$0,0.00');
+			total = total.toFormat('$0,0.00');
+			splitAmount = splitAmount.toFormat('$0,0.00');
+
 			//assign to obj
 			const newBasicResultsPostTax = Object.assign({}, basicResultsPostTax, {
 				numPeople: numPeople,

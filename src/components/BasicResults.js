@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 class BasicResults extends React.Component {
 	render() {
-		console.log('pre: ', this.props.basicResultsPreTax);
-		console.log('post: ', this.props.basicResultsPostTax);
-		console.log(this.props.prePostTaxChoice);
+		//console.log('pre: ', this.props.basicResultsPreTax);
+		//console.log('post: ', this.props.basicResultsPostTax);
+		//console.log(this.props.prePostTaxChoice);
 
 		const prePostTaxChoice = this.props.prePostTaxChoice;
 		const basicResultsPreTax = this.props.basicResultsPreTax;
