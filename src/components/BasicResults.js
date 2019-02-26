@@ -6,19 +6,37 @@ class BasicResults extends React.Component {
 		console.log('pre: ', this.props.basicResultsPreTax);
 		console.log('post: ', this.props.basicResultsPostTax);
 		console.log(this.props.prePostTaxChoice);
+
 		const prePostTaxChoice = this.props.prePostTaxChoice;
-		return(
+		const basicResultsPreTax = this.props.basicResultsPreTax;
+		const basicResultsPostTax = this.props.basicResultsPostTax;
+
+		return (
 			<div>
-				<ul>
-					<li>Bill Summary</li>
+				{prePostTaxChoice === 'Tip on pre-tax bill amount' ? (
 					<ul>
-						<li>Bill Amount: </li>
-						<li>Tax: </li>
-						<li>Tip: </li>
-						<li>Split Amount: </li>
-						<li>Total: </li>
+						<li>Bill Summary</li>
+						<ul>
+							<li>Pre Tax Bill Amount: {basicResultsPreTax.billAmount}</li>
+							<li>Tax: {basicResultsPreTax.taxAmount}</li>
+							<li>Tip: {basicResultsPreTax.tipAmount}</li>
+							<li>Split bill between: {basicResultsPreTax.numPeople}</li>
+							<li>Split Amount: {basicResultsPreTax.splitAmount}</li>
+							<li>Total: {basicResultsPreTax.total}</li>
+						</ul>
 					</ul>
-				</ul>
+				) : (
+					<ul>
+						<li>Bill Summary</li>
+						<ul>
+							<li>Post Tax Bill Amount: ${basicResultsPostTax.billAmount}</li>
+							<li>Tip: ${basicResultsPostTax.tipAmount}</li>
+							<li>Split bill between: {basicResultsPostTax.numPeople}</li>
+							<li>Split Amount: ${basicResultsPostTax.splitAmount}</li>
+							<li>Total: ${basicResultsPostTax.total}</li>
+						</ul>
+					</ul>
+				)}
 			</div>
 		);
 	}
@@ -32,4 +50,7 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps,null)(BasicResults);
+export default connect(
+	mapStateToProps,
+	null
+)(BasicResults);
