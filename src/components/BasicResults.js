@@ -20,7 +20,7 @@ class BasicResults extends React.Component {
 							<li>Pre Tax Bill Amount: {basicResultsPreTax.billAmount}</li>
 							<li>Tax: {basicResultsPreTax.taxAmount}</li>
 							<li>Tip: {basicResultsPreTax.tipAmount}</li>
-							<li>Split bill between: {basicResultsPreTax.numPeople}</li>
+							<li>Bill split between: {basicResultsPreTax.numPeople}</li>
 							<li>Split Amount: {basicResultsPreTax.splitAmount}</li>
 							<li>Total: {basicResultsPreTax.total}</li>
 						</ul>
@@ -31,7 +31,7 @@ class BasicResults extends React.Component {
 						<ul>
 							<li>Post Tax Bill Amount: ${basicResultsPostTax.billAmount}</li>
 							<li>Tip: ${basicResultsPostTax.tipAmount}</li>
-							<li>Split bill between: {basicResultsPostTax.numPeople}</li>
+							<li>Bill split between: {basicResultsPostTax.numPeople}</li>
 							<li>Split Amount: ${basicResultsPostTax.splitAmount}</li>
 							<li>Total: ${basicResultsPostTax.total}</li>
 						</ul>

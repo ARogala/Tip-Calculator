@@ -6,7 +6,7 @@ A most useful tip calculator. This calculator goes well beyond the basic beginne
 calculate the tip on the before (pre) or after (post) tax amount of bills. Users can also divide the bill up between friends 
 evenly (see basic tab) or unevenly (see Advanced tab).
 
-The [Dinero.js](https://github.com/sarahdayan/dinero.js) is used for all currency calculation.  
+The [Dinero.js](https://github.com/sarahdayan/dinero.js) library is used for all currency calculation.  
 
 ## Available Scripts
 
