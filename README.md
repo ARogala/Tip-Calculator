@@ -8,6 +8,8 @@ evenly (see basic tab) or unevenly (see Advanced tab).
 
 The [Dinero.js](https://github.com/sarahdayan/dinero.js) library is used for all currency calculation.  
 
+Check out the [app](https://mytipcalc.surge.sh/)
+
 ## Available Scripts
 
 In the project directory, you can run:
