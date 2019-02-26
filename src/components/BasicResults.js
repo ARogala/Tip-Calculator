@@ -47,7 +47,6 @@ class BasicResults extends React.Component {
 		const displayResults = this.props.displayResults;
 		const basicResultsPreTax = this.props.basicResultsPreTax;
 		const basicResultsPostTax = this.props.basicResultsPostTax;
-		
 
 		if (displayResults && prePostTaxChoice === 'Tip on pre-tax bill amount') {
 			return this.renderPreTaxResulst(basicResultsPreTax);

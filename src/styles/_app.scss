@@ -9,6 +9,7 @@
 .appBtn {
 	background-color: #4CAF50; /* Green */
 	border: none;
+	border-radius:  $border-radius-xl;
 	color: white;
 	padding: 15px 32px;
 	font-size: $huge-font-size;
@@ -21,6 +22,7 @@
 
 .appBtn:hover {
 	cursor: pointer;
+	transform: scale(1.05);
 }
 
 .App {

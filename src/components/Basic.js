@@ -81,33 +81,37 @@ class Basic extends React.Component {
 			<div>
 				<form className="TipCalcForm" onSubmit={e => this.handleSubmit(e)}>
 					<fieldset className="TipCalcForm__fieldset">
-						<legend className="TipCalcForm__legend">Choose the number of people splitting the bill:</legend>
+						<legend className="TipCalcForm__legend">Number of people splitting the bill:</legend>
 						<label className="TipCalcForm__label" htmlFor="numPeopleInput">
 							Number of people splitting the bill
 						</label>
-						<input
-							className="TipCalcForm__input"
-							type="number"
-							id="numPeopleInput"
-							min="1"
-							value={this.state.numPeople}
-							onChange={e => this.handleNumPeopleChange(e)}
-						/>
+						<div className="TipCalcForm__input-div">
+							<input
+								className="TipCalcForm__input"
+								type="number"
+								id="numPeopleInput"
+								min="1"
+								value={this.state.numPeople}
+								onChange={e => this.handleNumPeopleChange(e)}
+							/>
+						</div>
 					</fieldset>
 					<fieldset className="TipCalcForm__fieldset">
 						<legend className="TipCalcForm__legend">Enter Bill Amount:</legend>
 						<label className="TipCalcForm__label" htmlFor="billAmoutInput">
 							Bill Amount
 						</label>
-						<input
-							className="TipCalcForm__input"
-							type="number"
-							id="billAmoutInput"
-							min="0"
-							step="0.01"
-							value={this.state.billAmout}
-							onChange={e => this.handleBillAmountChange(e)}
-						/>
+						<div className="TipCalcForm__input-div">
+							<input
+								className="TipCalcForm__input"
+								type="number"
+								id="billAmoutInput"
+								min="0"
+								step="0.01"
+								value={this.state.billAmout}
+								onChange={e => this.handleBillAmountChange(e)}
+							/>
+						</div>
 					</fieldset>
 					{prePostTaxChoice === 'Tip on pre-tax bill amount' ? (
 						<fieldset className="TipCalcForm__fieldset">
@@ -115,15 +119,17 @@ class Basic extends React.Component {
 							<label className="TipCalcForm__label" htmlFor="taxPercentInput">
 								Tax Percent
 							</label>
-							<input
-								className="TipCalcForm__input"
-								type="number"
-								id="taxPercentInput"
-								min="0"
-								step="0.001"
-								value={this.state.taxPercent}
-								onChange={e => this.handleTaxPercentChange(e)}
-							/>
+							<div className="TipCalcForm__input-div">
+								<input
+									className="TipCalcForm__input"
+									type="number"
+									id="taxPercentInput"
+									min="0"
+									step="0.001"
+									value={this.state.taxPercent}
+									onChange={e => this.handleTaxPercentChange(e)}
+								/>
+							</div>
 						</fieldset>
 					) : null}
 
@@ -132,15 +138,17 @@ class Basic extends React.Component {
 						<label className="TipCalcForm__label" htmlFor="tipPercentInput">
 							Tip Percent
 						</label>
-						<input
-							className="TipCalcForm__input"
-							type="number"
-							id="tipPercentInput"
-							min="0"
-							step="0.5"
-							value={this.state.tipPercent}
-							onChange={e => this.handleTipPercentChange(e)}
-						/>
+						<div className="TipCalcForm__input-div">
+							<input
+								className="TipCalcForm__input"
+								type="number"
+								id="tipPercentInput"
+								min="0"
+								step="0.5"
+								value={this.state.tipPercent}
+								onChange={e => this.handleTipPercentChange(e)}
+							/>
+						</div>
 					</fieldset>
 
 					<div className="appBtnContainer">
