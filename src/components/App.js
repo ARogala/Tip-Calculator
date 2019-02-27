@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
-// import { Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 // import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 import PrePostTaxSelect from './PrePostTaxSelect';
 import Basic from './Basic';
 import BasicResults from './BasicResults';
+import SettingsAdvanced from './SettingsAdvanced';
+import Advanced from './Advanced';
 
 import calculator from '../images/Calculator1.svg';
 
@@ -19,7 +21,7 @@ class App extends Component {
                     <Link to="/" className="nav__link">
                         Basic
                     </Link>
-                    <Link to="/" className="nav__link">
+                    <Link to="/advanced" className="nav__link">
                         Advanced
                     </Link>
                     <Link to="/" className="nav__link">
@@ -31,14 +33,38 @@ class App extends Component {
                     <img className="header__img" src={calculator} alt="beer" />
                 </header>
 
-                <main className="main" role="main" >
-                    <p>
-                        The basic tip calculator will split the bill evenly between the number of people selected on a pre
-                        or post tax basis. Default calculates on a pre tax basis. The split amount may be off due to rounding. 
-                    </p>
-                    <PrePostTaxSelect />
-                    <Basic />
-                    <BasicResults />
+                <main className="main" role="main">
+                    <Route
+                        exact
+                        path="/"
+                        render={() => (
+                            <div>
+                                <p>
+                                    The basic tip calculator will split the bill evenly between the number of people
+                                    selected on a pre or post tax basis. Default calculates on a pre tax basis. The
+                                    split amount may be off due to rounding.
+                                </p>
+                                <PrePostTaxSelect />
+                                <Basic />
+                                <BasicResults />
+                            </div>
+                        )}
+                    />
+
+                    <Route
+                        path="/advanced"
+                        render={() => (
+                            <div>
+                                <p>
+                                    The advanced tip calculator will split the bill unevenly between two and five
+                                    people. Pre/before tax basis is the only option here. Default splits the bill
+                                    unevenly between two. The split amount may be off due to rounding.
+                                </p>
+                                <SettingsAdvanced />
+                                <Advanced />
+                            </div>
+                        )}
+                    />
                 </main>
                 <ToastContainer />
             </div>
