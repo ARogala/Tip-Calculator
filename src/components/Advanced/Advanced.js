@@ -1,19 +1,31 @@
 import React from 'react';
+import { toast } from 'react-toastify';
+import { connect } from 'react-redux';
 
 class Advanced extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			numPeople: '2'
+			billAmount1: '',
+			billAmount2: '',
+			billAmount3: '',
+			billAmount4: '',
+			billAmount5: '',
+			name1: '',
+			name2: '',
+			name3: '',
+			name4: '',
+			name5: '',
 		};
 	}
 	render() {
+		console.log(this.props.numPeople);
 		return (
 			<div>
 				<form>
 					<fieldset className="TipCalcForm__fieldset">
 						<legend className="TipCalcForm__legend">Enter Name and Bill Amount:</legend>
-						
+
 						<label className="TipCalcForm__label-advanced" htmlFor="nameInput">
 							Name
 						</label>
@@ -22,21 +34,21 @@ class Advanced extends React.Component {
 								className="TipCalcForm__input"
 								type="text"
 								id="nameInput"
-								value={this.state.billAmout}
+								value={this.state.billAmount}
 								onChange={e => this.handleNameChange(e)}
 							/>
 						</div>
-						<label className="TipCalcForm__label-advanced" htmlFor="billAmoutInput">
+						<label className="TipCalcForm__label-advanced" htmlFor="billAmountInput">
 							Bill Amount
 						</label>
 						<div className="TipCalcForm__input-div">
 							<input
 								className="TipCalcForm__input"
 								type="number"
-								id="billAmoutInput"
+								id="billAmountInput"
 								min="0"
 								step="0.01"
-								value={this.state.billAmout}
+								value={this.state.billAmount}
 								onChange={e => this.handleBillAmountChange(e)}
 							/>
 						</div>
@@ -91,4 +103,13 @@ class Advanced extends React.Component {
 	}
 }
 
-export default Advanced;
+const mapStateToProps = state => {
+	return {
+		numPeople: state.numPeople
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	null
+)(Advanced);

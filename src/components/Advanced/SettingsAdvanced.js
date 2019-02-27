@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getPrePostTaxChoice } from '../../redux/actions';
+import { getNumPeople } from '../../redux/actions';
 
 class SettingsAdvanced extends React.Component {
 	constructor(props) {
@@ -17,7 +17,7 @@ class SettingsAdvanced extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		this.props.getPrePostTaxChoice(this.state.prePostTax);
+		this.props.getNumPeople(this.state.numPeople);
 	}
 
 	resetForm() {
@@ -57,7 +57,7 @@ class SettingsAdvanced extends React.Component {
 }
 
 const mapDispatchToProps = {
-	getPrePostTaxChoice: getPrePostTaxChoice
+	getNumPeople: getNumPeople
 };
 
 export default connect(

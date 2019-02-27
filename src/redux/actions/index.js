@@ -5,6 +5,13 @@ export const getPrePostTaxChoice = prePostTax => {
 	};
 };
 
+export const getNumPeople = numPeople => {
+	return {
+		type: 'GET_NUM_PEOPLE',
+		payload: numPeople
+	};
+};
+
 export const displayResults = () => {
 	return {
 		type: 'DISPLAY_RESULTS'

@@ -10,23 +10,24 @@ const initialState = {
 	prePostTaxChoice: 'Tip on pre-tax bill amount',
 	basicResultsPreTax: { numPeople: 1, billAmount: 0, taxAmount: 0, tipAmount: 0, splitAmount: 0, total: 0 },
 	basicResultsPostTax: { numPeople: 1, billAmount: 0, tipAmount: 0, splitAmount: 0, total: 0 },
-	displayResults: false
+	displayResults: false,
+	numPeople: '2'
 };
 
 const displayResults = (displayResults = initialState.displayResults, action) => {
 	switch (action.type) {
-		case 'DISPLAY_RESULTS': 
-			return true
+		case 'DISPLAY_RESULTS':
+			return true;
 		default:
-			return false
+			return false;
 	}
-}
+};
 const basicResultsPreTax = (basicResultsPreTax = initialState.basicResultsPreTax, action) => {
 	switch (action.type) {
 		case 'GET_BASIC_INPUT_PRETAX':
 			//get user input Dinero currency must be in cents
 			const numPeople = parseInt(action.payload.numPeople);
-			let billAmount = Dinero({ amount: parseFloat(action.payload.billAmount)*100 });
+			let billAmount = Dinero({ amount: parseFloat(action.payload.billAmount) * 100 });
 			const taxPercent = parseFloat(action.payload.taxPercent);
 			const tipPercent = parseFloat(action.payload.tipPercent);
 			//calc results
@@ -64,7 +65,7 @@ const basicResultsPostTax = (basicResultsPostTax = initialState.basicResultsPost
 		case 'GET_BASIC_INPUT_POSTTAX':
 			//get user input Dinero currency must be in cents
 			const numPeople = parseInt(action.payload.numPeople);
-			let billAmount = Dinero({ amount: parseFloat(action.payload.billAmount)*100 });
+			let billAmount = Dinero({ amount: parseFloat(action.payload.billAmount) * 100 });
 			const tipPercent = parseFloat(action.payload.tipPercent);
 			//calc results
 			let tipAmount = billAmount.percentage(tipPercent);
@@ -102,9 +103,19 @@ const prePostTaxChoice = (prePostTaxChoice = initialState.prePostTaxChoice, acti
 	}
 };
 
+const numPeople = (numPeople = initialState.numPeople, action) => {
+	switch (action.type) {
+		case 'GET_NUM_PEOPLE':
+			return action.payload;
+		default:
+			return numPeople;
+	}
+};
+
 export default combineReducers({
 	prePostTaxChoice: prePostTaxChoice,
 	basicResultsPreTax: basicResultsPreTax,
 	basicResultsPostTax: basicResultsPostTax,
-	displayResults: displayResults
+	displayResults: displayResults,
+	numPeople: numPeople
 });
