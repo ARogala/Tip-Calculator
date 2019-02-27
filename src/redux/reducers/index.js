@@ -11,7 +11,9 @@ const initialState = {
 	basicResultsPreTax: { numPeople: 1, billAmount: 0, taxAmount: 0, tipAmount: 0, splitAmount: 0, total: 0 },
 	basicResultsPostTax: { numPeople: 1, billAmount: 0, tipAmount: 0, splitAmount: 0, total: 0 },
 	displayResults: false,
-	numPeople: '2'
+	//advanced
+	numPeople: '2',
+	advancedResults: {numPeople: 2, names: [], billAmounts: [],  taxAmounts: [], tipAmounts: [], total: 0}
 };
 
 const displayResults = (displayResults = initialState.displayResults, action) => {
@@ -94,6 +96,21 @@ const basicResultsPostTax = (basicResultsPostTax = initialState.basicResultsPost
 	}
 };
 
+//advancedResults: {numPeople: 2, names: [], billAmounts: [],  taxAmounts: [], tipAmounts: [], total: 0}
+const advancedResults = (advancedResults = initialState.advancedResults, action) => {
+	switch (action.type) {
+		case 'GET_ADVANCED_INPUT':
+			console.log(action.payload.numPeople);
+			console.log(action.payload.names);
+			console.log(action.payload.billAmounts);
+			console.log(action.payload.taxPercent);
+			console.log(action.payload.tipPercent);
+			return advancedResults;
+		default:
+			return advancedResults
+	}
+}
+
 const prePostTaxChoice = (prePostTaxChoice = initialState.prePostTaxChoice, action) => {
 	switch (action.type) {
 		case 'PRE_POST_TAX_CHOICE':
@@ -117,5 +134,7 @@ export default combineReducers({
 	basicResultsPreTax: basicResultsPreTax,
 	basicResultsPostTax: basicResultsPostTax,
 	displayResults: displayResults,
-	numPeople: numPeople
+	//advanced
+	numPeople: numPeople,
+	advancedResults: advancedResults
 });

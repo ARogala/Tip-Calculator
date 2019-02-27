@@ -2,6 +2,8 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 
+import { getAdvancedInput } from '../../redux/actions';
+
 class Advanced extends React.Component {
 	constructor(props) {
 		super(props);
@@ -15,9 +17,17 @@ class Advanced extends React.Component {
 			name2: '',
 			name3: '',
 			name4: '',
-			name5: ''
+			name5: '',
+			taxPercent: '',
+			tipPercent: ''
 		};
 	}
+
+	alertUser = () => {
+		toast.error('Please enter all your bill information.', {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
 
 	//get state name and set it on input jsx
 	setInputValueName(index) {
@@ -78,6 +88,95 @@ class Advanced extends React.Component {
 		}
 	}
 
+	handleTaxPercentChange(e) {
+		this.setState({ taxPercent: e.target.value });
+	}
+
+	handleTipPercentChange(e) {
+		this.setState({ tipPercent: e.target.value });
+	}
+
+	handleSubmit(e, numPeople) {
+		e.preventDefault();
+		const getAdvancedInput = this.props.getAdvancedInput;
+		const taxPercent = this.state.taxPercent;
+		const tipPercent = this.state.tipPercent;
+		const name1 = this.state.name1;
+		const name2 = this.state.name2;
+		const name3 = this.state.name3;
+		const name4 = this.state.name4;
+		const name5 = this.state.name5;
+		const billAmount1 = this.state.billAmount1;
+		const billAmount2 = this.state.billAmount2;
+		const billAmount3 = this.state.billAmount3;
+		const billAmount4 = this.state.billAmount4;
+		const billAmount5 = this.state.billAmount5;
+
+		if (
+			numPeople === 2 &&
+			name1 !== '' &&
+			name2 !== '' &&
+			billAmount1 !== '' &&
+			billAmount2 !== '' &&
+			taxPercent !== '' &&
+			tipPercent !== ''
+		) {
+			const names = [name1, name2];
+			const billAmounts = [billAmount1, billAmount2];
+			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+		} else if (
+			numPeople === 3 &&
+			name1 !== '' &&
+			name2 !== '' &&
+			name3 !== '' &&
+			billAmount1 !== '' &&
+			billAmount2 !== '' &&
+			billAmount3 !== '' &&
+			taxPercent !== '' &&
+			tipPercent !== ''
+		) {
+			const names = [name1, name2, name3];
+			const billAmounts = [billAmount1, billAmount2, billAmount3];
+			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+		} else if (
+			numPeople === 4 &&
+			name1 !== '' &&
+			name2 !== '' &&
+			name3 !== '' &&
+			name4 !== '' &&
+			billAmount1 !== '' &&
+			billAmount2 !== '' &&
+			billAmount3 !== '' &&
+			billAmount4 !== '' &&
+			taxPercent !== '' &&
+			tipPercent !== ''
+		) {
+			const names = [name1, name2, name3, name4];
+			const billAmounts = [billAmount1, billAmount2, billAmount3, billAmount4];
+			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+		} else if (
+			numPeople === 5 &&
+			name1 !== '' &&
+			name2 !== '' &&
+			name3 !== '' &&
+			name4 !== '' &&
+			name5 !== '' &&
+			billAmount1 !== '' &&
+			billAmount2 !== '' &&
+			billAmount3 !== '' &&
+			billAmount4 !== '' &&
+			billAmount5 !== '' &&
+			taxPercent !== '' &&
+			tipPercent !== ''
+		) {
+			const names = [name1, name2, name3, name4, name5];
+			const billAmounts = [billAmount1, billAmount2, billAmount3, billAmount4, billAmount5];
+			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+		} else {
+			this.alertUser();
+		}
+	}
+
 	resetForm() {
 		this.setState({
 			billAmount1: '',
@@ -89,12 +188,13 @@ class Advanced extends React.Component {
 			name2: '',
 			name3: '',
 			name4: '',
-			name5: ''
+			name5: '',
+			taxPercent: '',
+			tipPercent: ''
 		});
 	}
 
-	renderNameBillAmountInputs() {
-		const numPeople = this.props.numPeople;
+	renderNameBillAmountInputs(numPeople) {
 		const nameBillAmountInput = Array.from({ length: numPeople }).map((_, index) => {
 			return (
 				<fieldset className="TipCalcForm__fieldset" key={index}>
@@ -133,10 +233,11 @@ class Advanced extends React.Component {
 	}
 
 	render() {
+		const numPeople = parseInt(this.props.numPeople);
 		return (
 			<div>
-				<form>
-					{this.renderNameBillAmountInputs()}
+				<form onSubmit={e => this.handleSubmit(e, numPeople)}>
+					{this.renderNameBillAmountInputs(numPeople)}
 					<fieldset className="TipCalcForm__fieldset">
 						<legend className="TipCalcForm__legend">Enter Tax Percent:</legend>
 						<label className="TipCalcForm__label" htmlFor="taxPercentInput">
@@ -193,7 +294,11 @@ const mapStateToProps = state => {
 	};
 };
 
+const mapDispatchToProps = {
+	getAdvancedInput: getAdvancedInput
+};
+
 export default connect(
 	mapStateToProps,
-	null
+	mapDispatchToProps
 )(Advanced);

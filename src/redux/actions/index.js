@@ -40,3 +40,16 @@ export const getBasicInputPostTax = (numPeople, billAmount, tipPercent) => {
 		}
 	};
 };
+
+export const getAdvancedInput = (numPeople, names, billAmounts, taxPercent, tipPercent) => {
+	return {
+		type: 'GET_ADVANCED_INPUT',
+		payload: {
+			numPeople: numPeople,
+			names: names,
+			billAmounts: billAmounts,
+			taxPercent: taxPercent,
+			tipPercent: tipPercent
+		}
+	};
+};
