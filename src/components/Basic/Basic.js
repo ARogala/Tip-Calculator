@@ -2,7 +2,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 
-import { getBasicInputPreTax, getBasicInputPostTax, displayResults } from '../redux/actions';
+import { getBasicInputPreTax, getBasicInputPostTax, displayResults } from '../../redux/actions';
 
 class Basic extends React.Component {
 	constructor(props) {

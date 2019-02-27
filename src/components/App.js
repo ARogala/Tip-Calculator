@@ -5,11 +5,11 @@ import { Route } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import PrePostTaxSelect from './PrePostTaxSelect';
-import Basic from './Basic';
-import BasicResults from './BasicResults';
-import SettingsAdvanced from './SettingsAdvanced';
-import Advanced from './Advanced';
+import PrePostTaxSelect from './Basic/PrePostTaxSelect';
+import Basic from './Basic/Basic';
+import BasicResults from './Basic/BasicResults';
+import SettingsAdvanced from './Advanced/SettingsAdvanced';
+import Advanced from './Advanced/Advanced';
 
 import calculator from '../images/Calculator1.svg';
 

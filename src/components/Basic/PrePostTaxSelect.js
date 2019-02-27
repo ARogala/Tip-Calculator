@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getPrePostTaxChoice } from '../redux/actions';
+import { getPrePostTaxChoice } from '../../redux/actions';
 
 class PrePostTaxSelect extends React.Component {
 	constructor(props) {
