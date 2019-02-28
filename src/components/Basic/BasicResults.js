@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 class BasicResults extends React.Component {
 	renderPreTaxResulst = basicResultsPreTax => {
 		return (
-			<div>
-				<ul>
-					<li>Bill Summary</li>
-					<ul>
-						<li>Pre Tax Bill Amount: {basicResultsPreTax.billAmount}</li>
+			<div className="results">
+				<ul className="results__billsummary">
+					<li className="results__title">Bill Summary</li>
+					<ul className="results__details">
+						<li>Pre Tax Bill: {basicResultsPreTax.billAmount}</li>
 						<li>Tax: {basicResultsPreTax.taxAmount}</li>
 						<li>Tip: {basicResultsPreTax.tipAmount}</li>
 						<li>Bill split between: {basicResultsPreTax.numPeople}</li>
@@ -22,11 +22,11 @@ class BasicResults extends React.Component {
 
 	renderPostTaxResults = basicResultsPostTax => {
 		return (
-			<div>
-				<ul>
-					<li>Bill Summary</li>
-					<ul>
-						<li>Post Tax Bill Amount: {basicResultsPostTax.billAmount}</li>
+			<div className="results">
+				<ul className="results__billsummary">
+					<li className="results__title">Bill Summary</li>
+					<ul className="results__details">
+						<li>Post Tax Bill: {basicResultsPostTax.billAmount}</li>
 						<li>Tip: {basicResultsPostTax.tipAmount}</li>
 						<li>Bill split between: {basicResultsPostTax.numPeople}</li>
 						<li>Split Amount: {basicResultsPostTax.splitAmount}</li>
@@ -54,7 +54,7 @@ class BasicResults extends React.Component {
 			return this.renderPostTaxResults(basicResultsPostTax);
 		} else {
 			return (
-				<div>
+				<div className="results">
 					<p>Enter bill information and click calculate.</p>
 				</div>
 			);

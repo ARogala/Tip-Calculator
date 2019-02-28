@@ -5,9 +5,9 @@ class AdvancedResults extends React.Component {
 	renderAdvancedResults(advancedResults) {
 		const individual = advancedResults.individual.map((person, index) => {
 			return (
-				<ul key={index}>
-					<li>{person.name} Summary</li>
-					<ul>
+				<ul className="results__billsummary" key={index}>
+					<li className="results__title">{person.name} Summary</li>
+					<ul className="results__details">
 						<li>Bill: {person.bill}</li>
 						<li>Tax: {person.tax}</li>
 						<li>Tip: {person.tip}</li>
@@ -17,10 +17,10 @@ class AdvancedResults extends React.Component {
 			);
 		});
 		return (
-			<div>
-				<ul>
-					<li>Bill Summary</li>
-					<ul>
+			<div className="results">
+				<ul className="results__billsummary">
+					<li className="results__title">Bill Summary</li>
+					<ul className="results__details">
 						<li>Bill: {advancedResults.total[0].totalBill}</li>
 						<li>Tax: {advancedResults.total[0].totalTax}</li>
 						<li>Tip: {advancedResults.total[0].totalTip}</li>
@@ -39,7 +39,7 @@ class AdvancedResults extends React.Component {
 			return this.renderAdvancedResults(this.props.advancedResults);
 		} else {
 			return (
-				<div>
+				<div className="results">
 					<p>Enter bill information and click calculate.</p>
 				</div>
 			);

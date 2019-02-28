@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+.results {
+	p {
+		text-align: center;
+		padding-top: 5px;
+	}
+	// ul
+	&__billsummary {
+		list-style-type: none;
+	}
+
+	&__title {
+		font-weight: bold;
+		text-align: center;
+	}
+
+	// ul
+	&__details {
+		list-style-type: square;
+		list-style-position: inside;
+		width: 300px;
+		margin: auto;
+	}
+}
