@@ -41,16 +41,16 @@ class BasicResults extends React.Component {
 		//console.log('pre: ', this.props.basicResultsPreTax);
 		//console.log('post: ', this.props.basicResultsPostTax);
 		//console.log(this.props.prePostTaxChoice);
-		//console.log(this.props.displayResults);
+		//console.log(this.props.displayBasicResults);
 
 		const prePostTaxChoice = this.props.prePostTaxChoice;
-		const displayResults = this.props.displayResults;
+		const displayBasicResults = this.props.displayBasicResults;
 		const basicResultsPreTax = this.props.basicResultsPreTax;
 		const basicResultsPostTax = this.props.basicResultsPostTax;
 
-		if (displayResults && prePostTaxChoice === 'Tip on pre-tax bill amount') {
+		if (displayBasicResults && prePostTaxChoice === 'Tip on pre-tax bill amount') {
 			return this.renderPreTaxResulst(basicResultsPreTax);
-		} else if (displayResults && prePostTaxChoice === 'Tip on post-tax bill amount') {
+		} else if (displayBasicResults && prePostTaxChoice === 'Tip on post-tax bill amount') {
 			return this.renderPostTaxResults(basicResultsPostTax);
 		} else {
 			return (
@@ -67,7 +67,7 @@ const mapStateToProps = state => {
 		prePostTaxChoice: state.prePostTaxChoice,
 		basicResultsPreTax: state.basicResultsPreTax,
 		basicResultsPostTax: state.basicResultsPostTax,
-		displayResults: state.displayResults
+		displayBasicResults: state.displayBasicResults
 	};
 };
 

@@ -1,4 +1,4 @@
-import { GET_BASIC_INPUT_PRETAX, GET_BASIC_INPUT_POSTTAX, PRE_POST_TAX_CHOICE } from './types';
+import { GET_BASIC_INPUT_PRETAX, GET_BASIC_INPUT_POSTTAX, PRE_POST_TAX_CHOICE, DISPLAY_BASIC_RESULTS } from './types';
 
 export const getBasicInputPreTax = (numPeople, billAmount, taxPercent, tipPercent) => {
 	return {
@@ -27,5 +27,11 @@ export const getPrePostTaxChoice = prePostTax => {
 	return {
 		type: PRE_POST_TAX_CHOICE,
 		payload: prePostTax
+	};
+};
+
+export const displayBasicResults = () => {
+	return {
+		type: DISPLAY_BASIC_RESULTS
 	};
 };

@@ -1,5 +1,10 @@
 import Dinero from 'dinero.js'; //for currency calc
-import { PRE_POST_TAX_CHOICE, GET_BASIC_INPUT_PRETAX, GET_BASIC_INPUT_POSTTAX } from '../actions/types';
+import {
+	PRE_POST_TAX_CHOICE,
+	GET_BASIC_INPUT_PRETAX,
+	GET_BASIC_INPUT_POSTTAX,
+	DISPLAY_BASIC_RESULTS
+} from '../actions/types';
 //set Dinero globals
 Dinero.defaultCurrency = 'USD';
 Dinero.defaultPrecision = 2;
@@ -7,6 +12,7 @@ Dinero.globalLocale = 'en-US';
 
 const initialState = {
 	prePostTaxChoice: 'Tip on pre-tax bill amount',
+	displayBasicResults: false,
 	basicResultsPreTax: { numPeople: 1, billAmount: 0, taxAmount: 0, tipAmount: 0, splitAmount: 0, total: 0 },
 	basicResultsPostTax: { numPeople: 1, billAmount: 0, tipAmount: 0, splitAmount: 0, total: 0 }
 };
@@ -17,6 +23,15 @@ export const prePostTaxChoice = (prePostTaxChoice = initialState.prePostTaxChoic
 			return action.payload;
 		default:
 			return prePostTaxChoice;
+	}
+};
+
+export const displayBasicResults = (displayBasicResults = initialState.displayBasicResults, action) => {
+	switch (action.type) {
+		case DISPLAY_BASIC_RESULTS:
+			return true;
+		default:
+			return displayBasicResults;
 	}
 };
 

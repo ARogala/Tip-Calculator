@@ -2,7 +2,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 
-import { getBasicInputPreTax, getBasicInputPostTax, displayResults } from '../../redux/actions';
+import { getBasicInputPreTax, getBasicInputPostTax, displayBasicResults } from '../../redux/actions';
 
 class Basic extends React.Component {
 	constructor(props) {
@@ -52,10 +52,10 @@ class Basic extends React.Component {
 			tipPercent !== ''
 		) {
 			this.props.getBasicInputPreTax(numPeople, billAmout, taxPercent, tipPercent);
-			this.props.displayResults();
+			this.props.displayBasicResults();
 		} else if (prePostTaxChoice === 'Tip on post-tax bill amount' && billAmout !== '' && tipPercent !== '') {
 			this.props.getBasicInputPostTax(numPeople, billAmout, tipPercent);
-			this.props.displayResults();
+			this.props.displayBasicResults();
 		} else {
 			this.alertUser();
 		}
@@ -176,7 +176,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
 	getBasicInputPreTax: getBasicInputPreTax,
 	getBasicInputPostTax: getBasicInputPostTax,
-	displayResults: displayResults
+	displayBasicResults: displayBasicResults
 };
 
 export default connect(
