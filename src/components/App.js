@@ -10,6 +10,7 @@ import Basic from './Basic/Basic';
 import BasicResults from './Basic/BasicResults';
 import SettingsAdvanced from './Advanced/SettingsAdvanced';
 import Advanced from './Advanced/Advanced';
+import AdvancedResults from './Advanced/AdvancedResults';
 
 import calculator from '../images/Calculator1.svg';
 
@@ -62,6 +63,7 @@ class App extends Component {
                                 </p>
                                 <SettingsAdvanced />
                                 <Advanced />
+                                <AdvancedResults />
                             </div>
                         )}
                     />
