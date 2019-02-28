@@ -37,7 +37,7 @@ class App extends Component {
                         path="/"
                         render={() => (
                             <div>
-                                <p>
+                                <p className="App__paragraph">
                                     The basic tip calculator will split the bill evenly between the number of people
                                     selected on a pre or post tax basis. Default calculates on a pre tax basis. The
                                     split amount may be off due to rounding.
@@ -53,7 +53,7 @@ class App extends Component {
                         path="/advanced"
                         render={() => (
                             <div>
-                                <p>
+                                <p className="App__paragraph">
                                     The advanced tip calculator will split the bill unevenly between two through five
                                     people on a pre/before tax basis. Default splits the bill unevenly between two
                                     people. The split amount may be off due to rounding.
