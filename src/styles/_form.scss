@@ -18,6 +18,12 @@
 		display: none;
 	}
 
+	&__label-advanced {
+		display: block;
+		font-size: $small-font-size;
+		text-align: center;
+	}
+
 	&__select-div {
 		margin: 5px auto 5px auto;
 		border: 1px solid black;

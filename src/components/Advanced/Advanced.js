@@ -241,7 +241,7 @@ class Advanced extends React.Component {
 		const numPeople = parseInt(this.props.numPeople);
 		return (
 			<div>
-				<form onSubmit={e => this.handleSubmit(e, numPeople)}>
+				<form className="TipCalcForm" onSubmit={e => this.handleSubmit(e, numPeople)}>
 					{this.renderNameBillAmountInputs(numPeople)}
 					<fieldset className="TipCalcForm__fieldset">
 						<legend className="TipCalcForm__legend">Enter Tax Percent:</legend>
