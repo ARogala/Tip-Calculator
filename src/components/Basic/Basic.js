@@ -21,6 +21,35 @@ class Basic extends React.Component {
 		});
 	};
 
+	cheap = () => {
+		toast.info('So did your service suck or are you just cheap!!', {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
+
+	notBad = () => {
+		toast.info('Ok not bad that is a respectable tip!', {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
+
+	great = () => {
+		toast.info('WOW Daddy Warbucks is a big spender!!', {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
+
+	tauntUser(tipPercent) {
+		const percent = parseFloat(tipPercent);
+		if (percent <= 15) {
+			this.cheap();
+		} else if (percent > 15 && percent <= 18) {
+			this.notBad();
+		} else if (percent > 18) {
+			this.great();
+		}
+	}
+
 	handleNumPeopleChange(e) {
 		this.setState({ numPeople: e.target.value });
 	}
@@ -52,9 +81,11 @@ class Basic extends React.Component {
 			tipPercent !== ''
 		) {
 			this.props.getBasicInputPreTax(numPeople, billAmount, taxPercent, tipPercent);
+			this.tauntUser(tipPercent);
 			this.props.displayBasicResults();
 		} else if (prePostTaxChoice === 'Tip on post-tax bill amount' && billAmount !== '' && tipPercent !== '') {
 			this.props.getBasicInputPostTax(numPeople, billAmount, tipPercent);
+			this.tauntUser(tipPercent);
 			this.props.displayBasicResults();
 		} else {
 			this.alertUser();

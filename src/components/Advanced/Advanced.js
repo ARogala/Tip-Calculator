@@ -29,6 +29,35 @@ class Advanced extends React.Component {
 		});
 	};
 
+	cheap = () => {
+		toast.info('So did your service suck or are you just cheap!!', {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
+
+	notBad = () => {
+		toast.info('Ok not bad that is a respectable tip!', {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
+
+	great = () => {
+		toast.info('WOW Daddy Warbucks is a big spender!!', {
+			position: toast.POSITION.TOP_CENTER
+		});
+	};
+
+	tauntUser(tipPercent) {
+		const percent = parseFloat(tipPercent);
+		if (percent <= 15) {
+			this.cheap();
+		} else if (percent > 15 && percent <= 18) {
+			this.notBad();
+		} else if (percent > 18) {
+			this.great();
+		}
+	}
+
 	//get state name and set it on input jsx
 	setInputValueName(index) {
 		if (index === 1) {
@@ -125,6 +154,7 @@ class Advanced extends React.Component {
 			const names = [name1, name2];
 			const billAmounts = [billAmount1, billAmount2];
 			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+			this.tauntUser(tipPercent);
 			displayAdvancedResults();
 		} else if (
 			numPeople === 3 &&
@@ -140,6 +170,7 @@ class Advanced extends React.Component {
 			const names = [name1, name2, name3];
 			const billAmounts = [billAmount1, billAmount2, billAmount3];
 			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+			this.tauntUser(tipPercent);
 			displayAdvancedResults();
 		} else if (
 			numPeople === 4 &&
@@ -157,6 +188,7 @@ class Advanced extends React.Component {
 			const names = [name1, name2, name3, name4];
 			const billAmounts = [billAmount1, billAmount2, billAmount3, billAmount4];
 			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+			this.tauntUser(tipPercent);
 			displayAdvancedResults();
 		} else if (
 			numPeople === 5 &&
@@ -176,6 +208,7 @@ class Advanced extends React.Component {
 			const names = [name1, name2, name3, name4, name5];
 			const billAmounts = [billAmount1, billAmount2, billAmount3, billAmount4, billAmount5];
 			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+			this.tauntUser(tipPercent);
 			displayAdvancedResults();
 		} else {
 			this.alertUser();
