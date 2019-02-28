@@ -2,7 +2,7 @@ import React from 'react';
 import { toast } from 'react-toastify';
 import { connect } from 'react-redux';
 
-import { getAdvancedInput } from '../../redux/actions';
+import { getAdvancedInput, displayAdvancedResults } from '../../redux/actions';
 
 class Advanced extends React.Component {
 	constructor(props) {
@@ -99,6 +99,7 @@ class Advanced extends React.Component {
 	handleSubmit(e, numPeople) {
 		e.preventDefault();
 		const getAdvancedInput = this.props.getAdvancedInput;
+		const displayAdvancedResults = this.props.displayAdvancedResults;
 		const taxPercent = this.state.taxPercent;
 		const tipPercent = this.state.tipPercent;
 		const name1 = this.state.name1;
@@ -124,6 +125,7 @@ class Advanced extends React.Component {
 			const names = [name1, name2];
 			const billAmounts = [billAmount1, billAmount2];
 			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+			displayAdvancedResults();
 		} else if (
 			numPeople === 3 &&
 			name1 !== '' &&
@@ -138,6 +140,7 @@ class Advanced extends React.Component {
 			const names = [name1, name2, name3];
 			const billAmounts = [billAmount1, billAmount2, billAmount3];
 			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+			displayAdvancedResults();
 		} else if (
 			numPeople === 4 &&
 			name1 !== '' &&
@@ -154,6 +157,7 @@ class Advanced extends React.Component {
 			const names = [name1, name2, name3, name4];
 			const billAmounts = [billAmount1, billAmount2, billAmount3, billAmount4];
 			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+			displayAdvancedResults();
 		} else if (
 			numPeople === 5 &&
 			name1 !== '' &&
@@ -172,6 +176,7 @@ class Advanced extends React.Component {
 			const names = [name1, name2, name3, name4, name5];
 			const billAmounts = [billAmount1, billAmount2, billAmount3, billAmount4, billAmount5];
 			getAdvancedInput(numPeople, names, billAmounts, taxPercent, tipPercent);
+			displayAdvancedResults();
 		} else {
 			this.alertUser();
 		}
@@ -295,7 +300,8 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = {
-	getAdvancedInput: getAdvancedInput
+	getAdvancedInput: getAdvancedInput,
+	displayAdvancedResults: displayAdvancedResults
 };
 
 export default connect(

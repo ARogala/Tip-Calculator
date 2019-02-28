@@ -12,3 +12,4 @@ export const DISPLAY_RESULTS = 'DISPLAY_RESULTS';
 //advanced calc action types
 export const GET_ADVANCED_INPUT = 'GET_ADVANCED_INPUT';
 export const GET_NUM_PEOPLE = 'GET_NUM_PEOPLE';
+export const DISPLAY_ADVANCED_RESULTS = 'DISPLAY_ADVANCED_RESULTS';

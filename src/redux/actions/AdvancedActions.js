@@ -1,4 +1,4 @@
-import { GET_ADVANCED_INPUT, GET_NUM_PEOPLE } from './types';
+import { GET_ADVANCED_INPUT, GET_NUM_PEOPLE, DISPLAY_ADVANCED_RESULTS } from './types';
 
 export const getAdvancedInput = (numPeople, names, billAmounts, taxPercent, tipPercent) => {
 	return {
@@ -17,5 +17,11 @@ export const getNumPeople = numPeople => {
 	return {
 		type: GET_NUM_PEOPLE,
 		payload: numPeople
+	};
+};
+
+export const displayAdvancedResults = () => {
+	return {
+		type: DISPLAY_ADVANCED_RESULTS
 	};
 };

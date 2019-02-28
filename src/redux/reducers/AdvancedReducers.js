@@ -1,5 +1,5 @@
 import Dinero from 'dinero.js'; //for currency calc
-import { GET_NUM_PEOPLE, GET_ADVANCED_INPUT } from '../actions/types';
+import { GET_NUM_PEOPLE, GET_ADVANCED_INPUT, DISPLAY_ADVANCED_RESULTS } from '../actions/types';
 
 //set Dinero globals
 Dinero.defaultCurrency = 'USD';
@@ -8,6 +8,7 @@ Dinero.globalLocale = 'en-US';
 
 const initialState = {
 	numPeople: '2',
+	displayAdvancedResults: false,
 	advancedResults: { numPeople: 2, individual: [{}], total: [{}] }
 };
 
@@ -17,6 +18,15 @@ export const numPeople = (numPeople = initialState.numPeople, action) => {
 			return action.payload;
 		default:
 			return numPeople;
+	}
+};
+
+export const displayAdvancedResults = (displayAdvancedResults = initialState.displayAdvancedResults, action) => {
+	switch (action.type) {
+		case DISPLAY_ADVANCED_RESULTS:
+			return true;
+		default:
+			return displayAdvancedResults;
 	}
 };
 

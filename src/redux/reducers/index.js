@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { prePostTaxChoice, basicResultsPreTax, basicResultsPostTax } from './BasicReducers';
-import { numPeople, advancedResults } from './AdvancedReducers';
+import { numPeople, displayAdvancedResults, advancedResults } from './AdvancedReducers';
 
 const initialState = {
 	displayResults: false
@@ -22,5 +22,6 @@ export default combineReducers({
 	displayResults: displayResults,
 	//advanced
 	numPeople: numPeople,
+	displayAdvancedResults: displayAdvancedResults,
 	advancedResults: advancedResults
 });
