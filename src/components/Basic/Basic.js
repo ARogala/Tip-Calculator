@@ -9,7 +9,7 @@ class Basic extends React.Component {
 		super(props);
 		this.state = {
 			numPeople: '1',
-			billAmout: '',
+			billAmount: '',
 			taxPercent: '',
 			tipPercent: ''
 		};
@@ -26,7 +26,7 @@ class Basic extends React.Component {
 	}
 
 	handleBillAmountChange(e) {
-		this.setState({ billAmout: e.target.value });
+		this.setState({ billAmount: e.target.value });
 	}
 
 	handleTaxPercentChange(e) {
@@ -41,26 +41,26 @@ class Basic extends React.Component {
 		e.preventDefault();
 		const prePostTaxChoice = this.props.prePostTaxChoice;
 		const numPeople = this.state.numPeople;
-		const billAmout = this.state.billAmout;
+		const billAmount = this.state.billAmount;
 		const taxPercent = this.state.taxPercent;
 		const tipPercent = this.state.tipPercent;
 
 		if (
 			prePostTaxChoice === 'Tip on pre-tax bill amount' &&
-			billAmout !== '' &&
+			billAmount !== '' &&
 			taxPercent !== '' &&
 			tipPercent !== ''
 		) {
-			this.props.getBasicInputPreTax(numPeople, billAmout, taxPercent, tipPercent);
+			this.props.getBasicInputPreTax(numPeople, billAmount, taxPercent, tipPercent);
 			this.props.displayBasicResults();
-		} else if (prePostTaxChoice === 'Tip on post-tax bill amount' && billAmout !== '' && tipPercent !== '') {
-			this.props.getBasicInputPostTax(numPeople, billAmout, tipPercent);
+		} else if (prePostTaxChoice === 'Tip on post-tax bill amount' && billAmount !== '' && tipPercent !== '') {
+			this.props.getBasicInputPostTax(numPeople, billAmount, tipPercent);
 			this.props.displayBasicResults();
 		} else {
 			this.alertUser();
 		}
 		//console.log('Num Ppl: ', numPeople);
-		//console.log('Bill Amount: ', billAmout);
+		//console.log('Bill Amount: ', billAmount);
 		//console.log('Tax Percent: ', taxPercent);
 		//console.log('Tip Percent: ', tipPercent);
 	}
@@ -68,7 +68,7 @@ class Basic extends React.Component {
 	resetForm() {
 		this.setState({
 			numPeople: '1',
-			billAmout: '',
+			billAmount: '',
 			taxPercent: '',
 			tipPercent: ''
 		});
@@ -98,17 +98,17 @@ class Basic extends React.Component {
 					</fieldset>
 					<fieldset className="TipCalcForm__fieldset">
 						<legend className="TipCalcForm__legend">Enter Bill Amount:</legend>
-						<label className="TipCalcForm__label" htmlFor="billAmoutInput">
+						<label className="TipCalcForm__label" htmlFor="billAmountInput">
 							Bill Amount
 						</label>
 						<div className="TipCalcForm__input-div">
 							<input
 								className="TipCalcForm__input"
 								type="number"
-								id="billAmoutInput"
+								id="billAmountInput"
 								min="0"
 								step="0.01"
-								value={this.state.billAmout}
+								value={this.state.billAmount}
 								onChange={e => this.handleBillAmountChange(e)}
 							/>
 						</div>

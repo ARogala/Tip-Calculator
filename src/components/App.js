@@ -25,9 +25,6 @@ class App extends Component {
                     <Link to="/advanced" className="nav__link">
                         Advanced
                     </Link>
-                    <Link to="/" className="nav__link">
-                        Directions
-                    </Link>
                 </nav>
                 <header className="header">
                     <h1>Tip Calculator</h1>
