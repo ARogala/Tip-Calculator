@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { ToastContainer } from 'react-toastify';
 import { Route } from 'react-router-dom';
-// import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ import SettingsAdvanced from './Advanced/SettingsAdvanced';
 import Advanced from './Advanced/Advanced';
 import AdvancedResults from './Advanced/AdvancedResults';
 
-import calculator from '../images/Calculator1.svg';
+import calculator from '../images/calculator.png';
 
 class App extends Component {
     render() {
@@ -28,6 +27,7 @@ class App extends Component {
                 </nav>
                 <header className="header">
                     <h1>Tip Calculator</h1>
+                    <h2>Never feel like an idiot splitting a bill!</h2>
                     <img className="header__img" src={calculator} alt="beer" />
                 </header>
 
@@ -54,9 +54,9 @@ class App extends Component {
                         render={() => (
                             <div>
                                 <p>
-                                    The advanced tip calculator will split the bill unevenly between two and five
-                                    people. Pre/before tax basis is the only option here. Default splits the bill
-                                    unevenly between two. The split amount may be off due to rounding.
+                                    The advanced tip calculator will split the bill unevenly between two through five
+                                    people on a pre/before tax basis. Default splits the bill unevenly between two
+                                    people. The split amount may be off due to rounding.
                                 </p>
                                 <SettingsAdvanced />
                                 <Advanced />
