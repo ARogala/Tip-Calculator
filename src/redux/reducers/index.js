@@ -143,8 +143,8 @@ const advancedResults = (advancedResults = initialState.advancedResults, action)
 				individual: individual,
 				total: total
 			});
-			console.log('orig: ', advancedResults);
-			console.log('new: ', newAdvancedResults);
+			//console.log('orig: ', advancedResults);
+			//console.log('new: ', newAdvancedResults);
 			//return new state
 			return newAdvancedResults;
 		default:
